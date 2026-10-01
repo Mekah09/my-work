@@ -6,9 +6,9 @@ function getTodo(req, res) {
 
 function addTodo(req, res) {
   try {
-    const { taskName, completed } = req.body;
+    const { taskName, completed } = req.body || {};
 
-    if (!taskName || !completed) {
+    if (!taskName || completed === undefined || completed === null) {
       return res.status(403).send("Name and Email is required")
     }
 
